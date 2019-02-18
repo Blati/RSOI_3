@@ -24,8 +24,7 @@ def hello():
             "users": "/users",
             "user": "/users/<username>",
             "bookings": "/users/<username>/bookings",
-            "bookings_add": "/users/<username>/bookings/add",
-            "suggested": "/users/<username>/suggested"
+            "bookings_add": "/users/<username>/bookings/add"
         }
     })
 
@@ -135,16 +134,6 @@ def user_bookings_add(username, page):
         return nice_json(result)
 
     raise NotImplementedError()				
-
-@app.route("/users/<username>/suggested", methods=['GET'])
-def user_suggested(username):
-    """
-    Returns movie suggestions. The algorithm returns a list of 3 top ranked
-    movies that the user has not yet booked.
-    :param username:
-    :return: Suggested movies
-    """
-    raise NotImplementedError()
 
 
 if __name__ == "__main__":
