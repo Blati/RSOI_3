@@ -2,23 +2,18 @@
   <div class="container">
     <div class="jumbotron mt-5">
       <div class="col-sm-8 mx-auto">
-        <h1 class="text-center">USERS</h1><br>
+        <h1 class="text-center">USER INFO</h1><br>
       </div>
       <table class="table col-md-10 mx-auto">
         <tbody>
-          <ul>
-            <li v-for="item in info">
               <tr>
                 <td>Name:</td>
-                <td> {{ item.name }} </td>
+                <td> {{ info.name }} </td>
               </tr>
               <tr>
                 <td>Last Active:</td>
-                <td> {{ item.last_active }} </td>
-                <td><router-link :to="'../users/' + item.id + '/'">Profile</router-link></td>
+                <td> {{ info.last_active }} </td>
               </tr><br>
-            </li>
-           </ul>
         </tbody>
       </table>
     </div>
@@ -36,7 +31,7 @@ export default {
   },
   mounted () {
     axios
-      .get('http://127.0.0.1:5000/users')
+      .get('http://127.0.0.1:5000/users/' + this.$route.params.id)
       .then(response => (this.info = response.data))
   }
 }
