@@ -1,12 +1,15 @@
 from services import root_dir, nice_json
 from flask import Flask
 from flask import request
+from flask_cors import CORS
 from werkzeug.exceptions import NotFound, ServiceUnavailable
 import json
 import requests
 from logging import FileHandler, WARNING
 
 app = Flask(__name__)
+
+CORS(app)
 
 file_handler = FileHandler('logs/user_log.log')
 file_handler.setLevel(WARNING)

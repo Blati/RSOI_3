@@ -1,11 +1,14 @@
 from services import root_dir, nice_json
 from flask import Flask
 from flask import request
+from flask_cors import CORS
 import json
 from werkzeug.exceptions import NotFound
 from logging import FileHandler, WARNING
 
 app = Flask(__name__)
+
+CORS(app)
 
 file_handler = FileHandler('logs/bookings_log.log')
 file_handler.setLevel(WARNING)

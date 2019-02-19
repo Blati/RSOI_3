@@ -7,21 +7,22 @@
       <table class="table col-md-10 mx-auto">
         <tbody>
               <ul>
-                <li v-for="value in info">
+                <li v-for="(value, index) in info">
                   <tr>
-                    <td>Title:</td>
+                    <td>Title:</td>	
                     <td> {{ value[0].title}} </td>
+					<td> <button v-on:click="add(index)" type="button" class="btn btn-outline-dark">Book this</button> </td>
                   </tr>
                   <tr>
                     <td>Rating:</td>
-                    <td> {{ value[0].rating }} </td>
+                    <td> {{ value[0].rating }} </td>				
                   </tr><br>
                 </li>
               </ul>
         </tbody>
 		<tr>
 		  <td>
-		  <router-link :to="'../'  + 'add/' + prevpage">Preious Day</router-link>
+		  <router-link :to="'../'  + 'add/' + prevpage">Previous Day</router-link>
 		  </td>
 		  <td>
 		  <router-link :to="'../'  + 'add/' + nextpage" >Next Day</router-link>
@@ -40,6 +41,24 @@ export default {
     return {
       info: null
     }
+  },	  
+  methods: {
+    add: function (film_id, film_date) {
+	  var film_date = this.$route.params.date	  
+      
+	  var film_id_arr = []
+	  film_id_arr[0] = film_id
+	  
+	  var json = JSON.stringify({[film_date] : film_id_arr}) 
+      let axiosConfig = {
+      headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          "Access-Control-Allow-Origin": "*"
+      }
+    };
+	  
+	  axios.post('http://127.0.0.1:5000/users/' + this.$route.params.id + '/bookings/add/' + film_date, json, axiosConfig)
+	}
   },
   computed: {
     prevpage: function () {
