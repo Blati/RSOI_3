@@ -13,7 +13,14 @@
               <tr>
                 <td>Last Active:</td>
                 <td> {{ info.last_active }} </td>
-              </tr><br>
+              </tr>
+              <tr>
+                <td>
+                </td>
+                <td>
+                  <router-link :to="'../' + info.id + '/bookings/'">Bookings</router-link>
+                </td>
+              </tr>
         </tbody>
       </table>
     </div>

@@ -20,14 +20,14 @@ export default new Router({
       component: Users
     },
     {
-      path: '/users/:id/bookings',
-	  name: 'User Bookings',
+      path: '/users/:id',
+      name: 'User Info',
       component: User
     },
     {
-      path: '/users/:id',
-	  name: 'User Info',
-      component: User
+      path: '/users/:id/bookings',
+      name: 'Bookings',
+      component: Bookings
     }
   ]
 })
