@@ -26,6 +26,7 @@
               </ul>
             </li>
            </ul>
+          <router-link :to="'../'  + 'bookings/add/09022019'">Add</router-link>
         </tbody>
       </table>
     </div>

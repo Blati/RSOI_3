@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Users from '@/components/Users'
 import User from '@/components/User'
 import Bookings from '@/components/Bookings'
+import Adding from '@/components/Adding'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/users/:id/bookings',
       name: 'Bookings',
       component: Bookings
+    },
+    {
+      path: '/users/:id/bookings/add/:date',
+      name: 'Adding',
+      component: Adding
     }
   ]
 })
